@@ -11,83 +11,83 @@ import android.widget.Toast;
 import com.frosty.jfactionsheetmenu.JFActionSheetMenu.OnActionSheetItemClickListener;
 
 public class MainActivity extends Activity implements OnActionSheetItemClickListener{
-
-	private JFActionSheetMenu  menu = null;
-	
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);//È«ÆÁ
-		setContentView(R.layout.activity_main);
-	}
-	
-	/*¼àÌı*/
-	
-	public void ActionBtn1(View view){
-		showMenu(-1,false);//¸ºÊıÊıÎªios6·ç¸ñ
-	}
-
-	public void ActionBtn2(View view){
-		showMenu(8,false);//ÕıÊıÎªios7·ç¸ñ
-	}
-
-	
-	//×Ô¶¨Òå
-	public void ActionBtn3(View view){
-		showMenu(0,true);//0ĞèÒª×Ô¶¨ÒåÑùÊ½
-	}
-
-	
-	
-	public void showMenu(int style,boolean isCuston){
-		
-		menu = new JFActionSheetMenu(this,style);//style<0:ios6£¬style>0:ios7
-		
-		menu.setUseCustonStyle(isCuston);
-		
-		/*Èç¹ûÊÇÊ¹ÓÃ×Ô¶¨Òå£¨ÉèÖÃÁËmenu.setUseCustonStyle(isCuston)£©£¬ÇÒÉèÖÃ¶ÔÓ¦µÄ±³¾°²ÅÓĞĞ§
-		 * ÇÒ±ØĞë·ÅÔÚ´´½¨¸÷°´Å¥Ö®Ç°
-		 *×¢Òâ£º·²ÊÇÔÚ´úÂëÖĞ¶ÔÊôĞÔ½øĞĞÉèÖÃ£¬¶¼ÒªÔÚ´´½¨itemÖ®Ç°ÊµÏÖ£¬¼´£¬·ÅÔÚsetCancelButtonTextAndColor()¡¢addItems£¨£©·½·¨Ö®Ç°
-		 * */
-		menu.setTitleBg(R.drawable.as_other_bt_bg);
-		menu.setItemBg(R.drawable.btn_style_one_normal);
-		menu.setCancelBg(R.drawable.as_cancel_bt_bg);
-		if(isCuston){
-			menu.setItemsTextClolor(Color.WHITE);
-		}
-		//ÉèÖÃÈ¡Ïû°´Å¥
-		menu.setCancelButtonTextAndColor("cancel",Color.RED);// ÔÚÖ÷itemÇ°ÃæÌí¼Ó
-		//ÉèÖÃ±êÌâ£¨²»ÉèÖÃÔò²»ÏÔÊ¾±êÌâ£©
-		if( style >= 0){
-			menu.setTitleButtonTextAndColor("ÇëÑ¡ÔñÕÕÆ¬", Color.BLUE);
-		}
-		
-		//ÉèÖÃÖ÷item
-		menu.addItems("ÅÄÕÕ","Ñ¡ÔñÕÕÆ¬","ÍøÂç»ñÈ¡");
-		
-		
-		//Ö÷item¼àÌı
-		menu.setItemClickListener(this);
-		//È¡Ïû°´Å¥¼àÌı
-		menu.setCancelableOnTouchMenuOutside(true);
-		//ÏÔÊ¾menu
-		menu.showMenu();
-
-	}
-	
-
-	@Override
-	public void onItemClick(View v,int itemPosition) {
-		// TODO Auto-generated method stub
-		Toast.makeText(this,"µã»÷ÁËµÚ"+itemPosition+"¸ö°´Å¥,ÄÚÈİÊÇ:"+((Button)v).getText() , Toast.LENGTH_SHORT).show();
-	}
-
-
-	@Override
-	public void onCanceClick(View v) {
-		// TODO Auto-generated method stub
-		Toast.makeText(this,"µã»÷ÁËÈ¡Ïû°´Å¥,ÄÚÈİÊÇ:"+((Button)v).getText() , Toast.LENGTH_SHORT).show();
-	}
-
+    
+    private JFActionSheetMenu  menu = null;
+    
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);//å…¨å±
+        setContentView(R.layout.activity_main);
+    }
+    
+    /*ç›‘å¬*/
+    
+    public void ActionBtn1(View view){
+        showMenu(-1,false);//è´Ÿæ•°æ•°ä¸ºios6é£æ ¼
+    }
+    
+    public void ActionBtn2(View view){
+        showMenu(8,false);//æ­£æ•°ä¸ºios7é£æ ¼
+    }
+    
+    
+    //è‡ªå®šä¹‰
+    public void ActionBtn3(View view){
+        showMenu(0,true);//0éœ€è¦è‡ªå®šä¹‰æ ·å¼
+    }
+    
+    
+    
+    public void showMenu(int style,boolean isCuston){
+        
+        menu = new JFActionSheetMenu(this,style);//style<0:ios6ï¼Œstyle>0:ios7
+        
+        menu.setUseCustonStyle(isCuston);
+        
+        /*å¦‚æœæ˜¯ä½¿ç”¨è‡ªå®šä¹‰ï¼ˆè®¾ç½®äº†menu.setUseCustonStyle(isCuston)ï¼‰ï¼Œä¸”è®¾ç½®å¯¹åº”çš„èƒŒæ™¯æ‰æœ‰æ•ˆ
+         * ä¸”å¿…é¡»æ”¾åœ¨åˆ›å»ºå„æŒ‰é’®ä¹‹å‰
+         *æ³¨æ„ï¼šå‡¡æ˜¯åœ¨ä»£ç ä¸­å¯¹å±æ€§è¿›è¡Œè®¾ç½®ï¼Œéƒ½è¦åœ¨åˆ›å»ºitemä¹‹å‰å®ç°ï¼Œå³ï¼Œæ”¾åœ¨setCancelButtonTextAndColor()ã€addItemsï¼ˆï¼‰æ–¹æ³•ä¹‹å‰
+         * */
+        menu.setTitleBg(R.drawable.as_other_bt_bg);
+        menu.setItemBg(R.drawable.btn_style_one_normal);
+        menu.setCancelBg(R.drawable.as_cancel_bt_bg);
+        if(isCuston){
+            menu.setItemsTextClolor(Color.WHITE);
+        }
+        //è®¾ç½®å–æ¶ˆæŒ‰é’®
+        menu.setCancelButtonTextAndColor("cancel",Color.RED);// åœ¨ä¸»itemå‰é¢æ·»åŠ 
+        //è®¾ç½®æ ‡é¢˜ï¼ˆä¸è®¾ç½®åˆ™ä¸æ˜¾ç¤ºæ ‡é¢˜ï¼‰
+        if( style >= 0){
+            menu.setTitleButtonTextAndColor("è¯·é€‰æ‹©ç…§ç‰‡", Color.BLUE);
+        }
+        
+        //è®¾ç½®ä¸»item
+        menu.addItems("æ‹ç…§","é€‰æ‹©ç…§ç‰‡","ç½‘ç»œè·å–");
+        
+        
+        //ä¸»itemç›‘å¬
+        menu.setItemClickListener(this);
+        //å–æ¶ˆæŒ‰é’®ç›‘å¬
+        menu.setCancelableOnTouchMenuOutside(true);
+        //æ˜¾ç¤ºmenu
+        menu.showMenu();
+        
+    }
+    
+    
+    @Override
+    public void onItemClick(View v,int itemPosition) {
+        // TODO Auto-generated method stub
+        Toast.makeText(this,"ç‚¹å‡»äº†ç¬¬"+itemPosition+"ä¸ªæŒ‰é’®,å†…å®¹æ˜¯:"+((Button)v).getText() , Toast.LENGTH_SHORT).show();
+    }
+    
+    
+    @Override
+    public void onCanceClick(View v) {
+        // TODO Auto-generated method stub
+        Toast.makeText(this,"ç‚¹å‡»äº†å–æ¶ˆæŒ‰é’®,å†…å®¹æ˜¯:"+((Button)v).getText() , Toast.LENGTH_SHORT).show();
+    }
+    
 }
